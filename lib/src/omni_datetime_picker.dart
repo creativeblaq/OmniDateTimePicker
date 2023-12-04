@@ -130,7 +130,7 @@ class _OmniDateTimePickerState extends State<OmniDateTimePicker>
                       ),
                     ),
                   ),
-                  const Expanded(child: SizedBox()),
+                  const Expanded(child: ColoredBox(color: widget.backgroundColor??Colors.transparent),),
                 ],
               ),
               //Divider(),
