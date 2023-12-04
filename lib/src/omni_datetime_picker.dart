@@ -87,9 +87,10 @@ class _OmniDateTimePickerState extends State<OmniDateTimePicker>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final defaultTextStlyle = Theme.of(context).textTheme.bodyMedium;
 
     return Dialog(
-      backgroundColor: Colors.black54,
+      backgroundColor: Colors.transparent,
       alignment: Alignment.center,
       insetPadding: widget.insetPadding,
       child: Theme(
@@ -125,12 +126,21 @@ class _OmniDateTimePickerState extends State<OmniDateTimePicker>
                           )),
                       child: Text(
                         widget.title,
-                        style: TextStyle(
-                            color: widget.tabTextColor ?? Colors.black87),
+                        style: defaultTextStlyle?.merge(
+                              TextStyle(
+                                  color: widget.tabTextColor ?? Colors.black87),
+                            ) ??
+                            TextStyle(
+                                color: widget.tabTextColor ?? Colors.black87),
                       ),
                     ),
                   ),
-                  Expanded(child: ColoredBox(color: widget.unselectedTabBackgroundColor??Colors.transparent),),
+                  Expanded(
+                    child: Container(
+                      color: widget.unselectedTabBackgroundColor ??
+                          Colors.transparent,
+                    ),
+                  ),
                 ],
               ),
               //Divider(),
@@ -239,6 +249,10 @@ class _OmniDateTimePickerState extends State<OmniDateTimePicker>
                           Expanded(
                             child: TextButton(
                               style: ButtonStyle(
+                                textStyle: MaterialStateProperty.all(
+                                    defaultTextStlyle?.copyWith(
+                                  color: widget.buttonTextColor ?? Colors.black,
+                                )),
                                 backgroundColor: MaterialStateProperty.all(
                                     widget.backgroundColor),
                               ),
@@ -248,7 +262,7 @@ class _OmniDateTimePickerState extends State<OmniDateTimePicker>
                               child: Text(
                                 // "Cancel",
                                 _localizations.cancelButtonLabel,
-                                style: TextStyle(
+                                style: defaultTextStlyle?.copyWith(
                                     color:
                                         widget.buttonTextColor ?? Colors.black),
                               ),
@@ -275,7 +289,7 @@ class _OmniDateTimePickerState extends State<OmniDateTimePicker>
                               child: Text(
                                 // "Save",
                                 _localizations.saveButtonLabel,
-                                style: TextStyle(
+                                style: defaultTextStlyle?.copyWith(
                                     color:
                                         widget.buttonTextColor ?? Colors.black),
                               ),
