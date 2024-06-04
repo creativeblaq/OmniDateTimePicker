@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'src/omni_datetime_picker.dart';
 import 'src/omni_datetime_range_picker.dart';
+export 'src/time_picker_spinner.dart';
 
 /// Show a dialog of the [OmniDateTimePicker]
 ///
