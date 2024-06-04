@@ -280,7 +280,7 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
     }
 
     if (!widget.is24HourMode) {
-      contents.add(spacer());
+      contents.add(spacer(showDivider: false));
       contents.add(SizedBox(
         width: _getItemWidth()! * 1.2,
         height: _getItemHeight()! * 3,
@@ -295,14 +295,17 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
     );
   }
 
-  Widget spacer() {
+  Widget spacer({bool showDivider = true}) {
     return SizedBox(
       width: _getSpacing(),
       height: _getItemHeight()! * 3,
-      child: Center(
-        child: Text(
-          ':',
-          style: widget.highlightedTextStyle,
+      child: Visibility(
+        visible: showDivider,
+        child: Center(
+          child: Text(
+            ':',
+            style: widget.highlightedTextStyle ?? defaultHighlightTextStyle,
+          ),
         ),
       ),
     );
