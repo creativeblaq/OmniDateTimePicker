@@ -299,6 +299,12 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
     return SizedBox(
       width: _getSpacing(),
       height: _getItemHeight()! * 3,
+      child: Center(
+        child: Text(
+          ':',
+          style: widget.highlightedTextStyle,
+        ),
+      ),
     );
   }
 
